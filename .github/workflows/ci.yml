@@ -23,19 +23,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    # sleep 2
-    - name: Sleep
-      shell: bash
-      run: |
-        sleep 2
-
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       # Override language selection by uncommenting this and choosing your languages
       with:
          languages: cpp
-         github-token: ${{ secrets.GITHUB_TOKEN }}
+         repo-token: ${{ secrets.GITHUB_TOKEN }}
     
     # Build
     - name: Build
