@@ -63,10 +63,11 @@ jobs:
     - name: Run
       shell: bash
       run: |
+        sed -i s/10.199.189.26/127.0.0.1/g output/conf/cluster_conf/cluster_table.data
         cd output/bin/ && ./bfe -c ../conf -l ../log &
     
     # Test
     - name: Test
       shell: bash
       run: |
-        curl -v http://localhost:8080 -H"Host:example.org"
+        curl http://localhost:8080 -H"Host:example.org"
