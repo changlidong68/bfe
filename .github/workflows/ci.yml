@@ -46,7 +46,7 @@ jobs:
     - name: setup Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+        python-version: '2.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
     - run: python -m SimpleHTTPServer 8181&
 
     # Build
