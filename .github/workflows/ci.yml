@@ -50,3 +50,15 @@ jobs:
     # code scanning 
     #- name: Perform CodeQL Analysis
     # uses: github/codeql-action/analyze@v1
+    
+    # Run
+    - name: Run
+      shell: bash
+      run: |
+        cd output/bin/ && ./bfe -c ../conf -l ../log
+    
+    # Test
+    - name: Test
+      shell: bash
+      run: |
+        curl -v http://localhost:8080 -H"Host:example.org"
