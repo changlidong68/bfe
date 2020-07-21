@@ -34,18 +34,26 @@ jobs:
     - run: git checkout HEAD^2
       if: ${{ github.event_name == 'pull_request' }}
 
+
     # Initializes the CodeQL tools for scanning.
     #- name: Initialize CodeQL
     #  uses: github/codeql-action/init@v1
       # Override language selection by uncommenting this and choosing your languages
       #    with:
       #   languages: go
-    
+
+    # Setup Python
+    - name: setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+    - run: python -m SimpleHTTPServer 8181&
+
     # Build
     - name: Build
       shell: bash
       run: |
-        make && make test
+        make
     
     # code scanning 
     #- name: Perform CodeQL Analysis
@@ -55,7 +63,7 @@ jobs:
     - name: Run
       shell: bash
       run: |
-        cd output/bin/ && ./bfe -c ../conf -l ../log
+        cd output/bin/ && ./bfe -c ../conf -l ../log &
     
     # Test
     - name: Test
