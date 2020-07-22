@@ -70,4 +70,4 @@ jobs:
     - name: Test
       shell: bash
       run: |
-        curl http://localhost:8080 -H"Host:example.org"
+        curl -v http://localhost:8080 -H"Host:example.org"
