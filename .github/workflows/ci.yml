@@ -71,4 +71,4 @@ jobs:
       shell: bash
       run: |
         status_code=`curl -l -s -o /dev/null -w %{http_code} http://localhost:8080 -H"Host:example.org"`
-        if [ "$status_code" != "300" ]; then exit 1; fi
+        if [ "$status_code" != "200" ]; then exit 1; fi
